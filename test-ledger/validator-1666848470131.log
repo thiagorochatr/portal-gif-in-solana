@@ -1,0 +1,34 @@
+[0m[38;5;8m[[0m2022-10-27T05:27:50.131715000Z [0m[32mINFO [0m solana_test_validator[0m[38;5;8m][0m solana-validator 1.14.6 (src:cfb2cbe1; feat:2390042548)
+[0m[38;5;8m[[0m2022-10-27T05:27:50.131826000Z [0m[32mINFO [0m solana_test_validator[0m[38;5;8m][0m Starting validator with: ArgsOs {
+        inner: [
+            "solana-test-validator",
+        ],
+    }
+[0m[38;5;8m[[0m2022-10-27T05:27:50.131860000Z [0m[33mWARN [0m solana_perf[0m[38;5;8m][0m CUDA is disabled
+[0m[38;5;8m[[0m2022-10-27T05:27:50.135459000Z [0m[32mINFO [0m solana_faucet::faucet[0m[38;5;8m][0m Faucet started. Listening on: 0.0.0.0:9900
+[0m[38;5;8m[[0m2022-10-27T05:27:50.135486000Z [0m[32mINFO [0m solana_faucet::faucet[0m[38;5;8m][0m Faucet account address: 8tPzsrDmZT3ZmN2RuSqsnauyLsYpoqrAZ6BEKc2M75Aq
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138145000Z [0m[33mWARN [0m solana_core::validator[0m[38;5;8m][0m identity: 24PA3UiKjqZcskDwUpHSqERWdEJvoSBfHSF1VJTgkdWx
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138168000Z [0m[33mWARN [0m solana_core::validator[0m[38;5;8m][0m vote account: FxT85Cnm56Z6PTc7s3X7mKz193t3ajoph7XjEbhGU8p1
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138182000Z [0m[33mWARN [0m solana_core::validator[0m[38;5;8m][0m authorized voter: FxT85Cnm56Z6PTc7s3X7mKz193t3ajoph7XjEbhGU8p1
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138376000Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m Initializing sigverify...
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138387000Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m Done.
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138396000Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m Cleaning accounts paths..
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138414000Z [0m[33mWARN [0m solana_core::validator[0m[38;5;8m][0m encountered error removing accounts path: "test-ledger/accounts": No such file or directory (os error 2)
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138427000Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m done. clean_accounts_paths took 22us
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138437000Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m Geyser plugin: accounts_update_notifier: false transaction_notifier: false
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138444000Z [0m[32mINFO [0m solana_core::system_monitor_service[0m[38;5;8m][0m Starting SystemMonitorService
+[0m[38;5;8m[[0m2022-10-27T05:27:50.138488000Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m loading ledger from "test-ledger"...
+[0m[38;5;8m[[0m2022-10-27T05:27:50.140826000Z [0m[32mINFO [0m solana_core::validator[0m[38;5;8m][0m genesis hash: 58Zfoe3YxVienTKuqAKQGg6YemfBRhzx3UkULEVA4xFL
+[0m[38;5;8m[[0m2022-10-27T05:27:50.140857000Z [0m[32mINFO [0m solana_ledger::blockstore[0m[38;5;8m][0m Maximum open file descriptors: 1048575
+[0m[38;5;8m[[0m2022-10-27T05:27:50.140864000Z [0m[32mINFO [0m solana_ledger::blockstore[0m[38;5;8m][0m Opening database at "test-ledger/rocksdb"
+thread 'main' panicked at 'Failed to open ledger database: RocksDb(Error { message: "Corruption: file is too short (140831 bytes) to be an sstabletest-ledger/rocksdb/000131.sst in file test-ledger/rocksdb/MANIFEST-000090" })', core/src/validator.rs:1429:6
+stack backtrace:
+   0: _rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::result::unwrap_failed
+   3: solana_core::validator::load_blockstore
+   4: solana_core::validator::Validator::new
+   5: solana_test_validator::TestValidator::start
+   6: solana_test_validator::TestValidatorGenesis::start_with_mint_address
+   7: solana_test_validator::main
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.

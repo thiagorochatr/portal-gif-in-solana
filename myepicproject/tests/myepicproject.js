@@ -32,17 +32,21 @@ const main = async() => {
   console.log('👀 GIF Count:', account.totalGifs.toString())
 
 	
-  // Chama add_gif!
-  await program.rpc.addGif({
+  // Você precisará agora passar um link do GIF para a função! Você também precisará passar o usuário que está enviando o GIF!
+  await program.rpc.addGif("https://media.giphy.com/media/QC7rGl1AEoGOXGWHUC/giphy-downsized-large.gif", {
     accounts: {
       baseAccount: baseAccount.publicKey,
+      user: provider.wallet.publicKey,
     },
   });
-  
-  // Obtem a conta novamente e veja o que mudou.
+
+  // Chama a conta
   account = await program.account.baseAccount.fetch(baseAccount.publicKey);
-  console.log('👀 GIF Count:', account.totalGifs.toString())
-}
+  console.log("👀 GIF Count", account.totalGifs.toString());
+
+  // Acessa o gif_list na conta
+  console.log("👀 GIF List", account.gifList);
+};
 
 const runMain = async () => {
   try {

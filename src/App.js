@@ -48,7 +48,7 @@ const App = () => {
           setWalletAddress(response.publicKey.toString());
         }
       } else {
-        alert("Objeto Solana não encontrado! Instale a Phantom Wallet 👻");
+        alert("Solana not found! Install Phantom Wallet 👻");
       }
     } catch (error) {
       console.error(error);
@@ -107,7 +107,7 @@ const App = () => {
       className="cta-button connect-wallet-button"
       onClick={connectWallet}
     >
-      Conecte sua carteira
+      Connect Wallet
     </button>
   );
 
@@ -136,13 +136,34 @@ const App = () => {
     }
   };
 
+  const voteGif = (index) => async () => {
+    try {
+      const provider = getProvider();
+      const program = new Program(idl, programID, provider);
+      const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
+  
+      console.log("Gif clicado", account.gifList[index])
+
+      await program.rpc.voteGif(index, {
+        accounts: {
+          baseAccount: baseAccount.publicKey,
+        },
+      });
+
+      console.log("Votação enviada para o GIF", index);
+      await getGifList();
+    } catch (error) {
+      console.log("Erro na votação:", error)
+    }
+  };
+
   const renderConnectedContainer = () => {
     // Se chegarmos aqui, significa que a conta do programa não foi inicializada.
       if (gifList === null) {
         return (
           <div className="connected-container">
             <button className="cta-button submit-gif-button" onClick={createGifAccount}>
-              Fazer inicialização única para conta do programa GIF
+              Single boot for GIF program account
             </button>
           </div>
         )
@@ -159,22 +180,26 @@ const App = () => {
             >
               <input
                 type="text"
-                placeholder="Entre com o link do GIF!"
+                placeholder="Put the GIF link!"
                 value={inputValue}
                 onChange={onInputChange}
               />
               <button type="submit" className="cta-button submit-gif-button">
-                Enviar
+                Submit
               </button>
             </form>
             <div className="gif-grid">
               {/* Usamos o indice (index) como chave (key), também o 'src' agora é 'item.gifLink' */}
               {gifList.map((item, index) => (
                 <div className="gif-item" key={index}>
-                  <img src={item.gifLink} />
+                  <img src={item.gifLink} alt={item.gifLink}/>
                   <p>
-                    {item.userAddress.toString()}
+                    Added by: {item.userAddress.toString()}
                   </p>
+                  <button onClick={voteGif(index)}>
+                    ❤️
+                  </button>
+                  {item.gifVotes.toString()} likes
                 </div>
               ))}
             </div>
@@ -218,8 +243,8 @@ const App = () => {
     <div className="App">
       <div className={walletAddress ? "authed-container" : "container"}>
         <div className="header-container">
-          <p className="header">🖼 Meu Portal de GIF 🖼</p>
-          <p className="sub-text">Veja sua coleção de GIF no metaverso ✨</p>
+          <p className="header">🖼 GIF Portal 🖼</p>
+          <p className="sub-text">View the GIF collection on Solana ✨</p>
           {!walletAddress && renderNotConnectedContainer()}
           {walletAddress && renderConnectedContainer()}
         </div>
@@ -230,7 +255,7 @@ const App = () => {
             href={TWITTER_LINK}
             target="_blank"
             rel="noreferrer"
-          >{`feito com ❤️ por @${TWITTER_HANDLE}`}</a>
+          >{`made with ❤️ by @${TWITTER_HANDLE}`}</a>
         </div>
       </div>
     </div>

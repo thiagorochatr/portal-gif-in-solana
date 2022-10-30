@@ -43,8 +43,15 @@ const main = async() => {
   // Chama a conta
   account = await program.account.baseAccount.fetch(baseAccount.publicKey);
   console.log("👀 GIF Count", account.totalGifs.toString());
+  console.log("👀 GIF List", account.gifList);
 
-  // Acessa o gif_list na conta
+  await program.rpc.voteGif(0, {
+    accounts: {
+      baseAccount: baseAccount.publicKey,
+    },
+  });
+
+  account = await program.account.baseAccount.fetch(baseAccount.publicKey);
   console.log("👀 GIF List", account.gifList);
 };
 

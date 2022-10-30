@@ -43,6 +43,22 @@
           "type": "string"
         }
       ]
+    },
+    {
+      "name": "voteGif",
+      "accounts": [
+        {
+          "name": "baseAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "indexGif",
+          "type": "u16"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -80,6 +96,10 @@
           {
             "name": "userAddress",
             "type": "publicKey"
+          },
+          {
+            "name": "gifVotes",
+            "type": "u128"
           }
         ]
       }

@@ -28,13 +28,6 @@ const opts = {
 const TWITTER_HANDLE = "thiagorochatr1";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
-const TEST_GIFS = [
-  "https://i.giphy.com/media/xUOxffMyVjqAnuJpJu/giphy.webp",
-  "https://media3.giphy.com/media/26n7aJwq73ubRevoQ/giphy.gif?cid=ecf05e47gpuxzul6z0774k47hcjp5p74uwfbfaq4xfjjco0c&rid=giphy.gif&ct=g",
-  "https://media3.giphy.com/media/3o7aD5euYKz5Ly7Wq4/giphy.gif?cid=ecf05e47gx235xsfy7tqmzvhwz06ztzaxr63av1f446mlluz&rid=giphy.gif&ct=g",
-  "https://media2.giphy.com/media/XKwfxBDG32ayrLHfAY/giphy.gif?cid=ecf05e47he0xf0mwnfx51x1f6m0wi4hzi52ql2dh0lnfe0tk&rid=giphy.gif&ct=g",
-];
-
 const App = () => {
   const [walletAddress, setWalletAddress] = useState(null);
   const [inputValue, setInputValue] = useState("");
@@ -179,6 +172,9 @@ const App = () => {
               {gifList.map((item, index) => (
                 <div className="gif-item" key={index}>
                   <img src={item.gifLink} />
+                  <p>
+                    {item.userAddress.toString()}
+                  </p>
                 </div>
               ))}
             </div>

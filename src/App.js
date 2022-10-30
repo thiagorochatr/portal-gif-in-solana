@@ -188,18 +188,20 @@ const App = () => {
                 Submit
               </button>
             </form>
+
             <div className="gif-grid">
-              {/* Usamos o indice (index) como chave (key), também o 'src' agora é 'item.gifLink' */}
               {gifList.map((item, index) => (
                 <div className="gif-item" key={index}>
                   <img src={item.gifLink} alt={item.gifLink}/>
                   <p>
                     Added by: {item.userAddress.toString()}
                   </p>
-                  <button onClick={voteGif(index)}>
-                    ❤️
-                  </button>
-                  {item.gifVotes.toString()} likes
+                  <div className="like-div">
+                    <button onClick={voteGif(index)}>
+                      ❤️
+                    </button>
+                    {item.gifVotes.toString()} likes
+                  </div>
                 </div>
               ))}
             </div>
@@ -244,7 +246,7 @@ const App = () => {
       <div className={walletAddress ? "authed-container" : "container"}>
         <div className="header-container">
           <p className="header">🖼 GIF Portal 🖼</p>
-          <p className="sub-text">View the GIF collection on Solana ✨</p>
+          <p className="sub-text">View the GIF collection on Solana</p>
           {!walletAddress && renderNotConnectedContainer()}
           {walletAddress && renderConnectedContainer()}
         </div>
@@ -255,7 +257,7 @@ const App = () => {
             href={TWITTER_LINK}
             target="_blank"
             rel="noreferrer"
-          >{`made with ❤️ by @${TWITTER_HANDLE}`}</a>
+          >{`made by @${TWITTER_HANDLE}`}</a>
         </div>
       </div>
     </div>

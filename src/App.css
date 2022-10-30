@@ -3,6 +3,7 @@
   background-color: #1a202c;
   overflow: auto;
   text-align: center;
+  color: white;
 }
 
 .container {
@@ -25,27 +26,17 @@
   margin: 0;
   font-size: 50px;
   font-weight: bold;
-  color: white;
 }
 
 .sub-text {
   font-size: 25px;
-  color: white;
-}
-
-.gradient-text {
-  background: -webkit-linear-gradient(left, #60c657 30%, #35aee2 60%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .cta-button {
   height: 45px;
   border: 0;
   width: auto;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding: 0 40px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
@@ -64,35 +55,33 @@
   background-size: 200% 200%;
   animation: gradient-animation 4s ease infinite;
   margin-left: 10px;
+  height: 60px;
 }
 
 .footer-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  padding-bottom: 45px;
+  padding: 30px 0;
 }
 
 .twitter-logo {
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
 }
 
 .footer-text {
-  color: white;
-  font-size: 16px;
+  color: rgb(249, 238, 217);
+  font-size: 14px;
   font-weight: bold;
 }
 
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 450px));
   grid-gap: 1.5rem;
-  justify-items: center;
+  justify-content: center;
+  align-content: center;
   margin: 0;
   padding: 0;
 }
@@ -101,8 +90,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  justify-self: center;
-  align-self: center;
+  justify-items: center;
+  align-items: center;
 }
 
 .gif-item img {
@@ -110,6 +99,35 @@
   height: 300px;
   border-radius: 10px;
   object-fit: cover;
+}
+
+.gif-item .like-div {
+  display: flex;
+  justify-content: center;
+  padding-right: 6px;
+  border: .5px solid white;
+}
+
+.gif-item .like-div button {
+  background-color: #1a202c;
+  padding: 0 6px;
+  margin-right: 6px;
+  border: 0;
+  border-right: .5px solid white;
+  cursor: pointer;
+}
+
+@media (max-width: 515px) {
+  .gif-item p {
+    font-size: 13px;
+  }
+
+  .gif-item img {
+    width: 350px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
 }
 
 .connected-container input[type='text'] {
@@ -124,8 +142,4 @@
   border: none;
   border-radius: 10px;
   margin: 50px auto;
-}
-
-.connected-container button {
-  height: 50px;
 }
